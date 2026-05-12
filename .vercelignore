@@ -1,0 +1,7 @@
+node_modules
+.git
+.npm-cache
+dist
+verification
+*.log
+vite-panda-ear*.log
