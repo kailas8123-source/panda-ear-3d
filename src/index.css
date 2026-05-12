@@ -1,0 +1,341 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 42 22% 93%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 0 0% 7%;
+    --primary-foreground: 42 22% 93%;
+    --secondary: 42 14% 84%;
+    --secondary-foreground: 0 0% 7%;
+    --muted: 42 14% 84%;
+    --muted-foreground: 52 4% 36%;
+    --accent: 186 83% 70%;
+    --accent-foreground: 0 0% 7%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 38 17% 78%;
+    --input: 38 17% 78%;
+    --ring: 186 83% 70%;
+    --radius: 0.5rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    min-width: 320px;
+    min-height: 100%;
+    overflow-x: hidden;
+    background: #f2f0eb;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-foreground antialiased;
+    font-family:
+      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+  }
+}
+
+.model-page {
+  min-height: 240vh;
+  color: #111111;
+  background:
+    radial-gradient(circle at 65% 30%, rgba(255, 255, 255, 0.88), transparent 32%),
+    linear-gradient(145deg, #fbfaf7 0%, #f2f0eb 48%, #ddd8cf 100%);
+}
+
+.model-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+}
+
+.panda-canvas {
+  width: 100vw !important;
+  height: 100vh !important;
+}
+
+.model-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1180px;
+  height: 76px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  pointer-events: none;
+}
+
+.model-header > * {
+  pointer-events: auto;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  background: rgba(255, 255, 255, 0.66);
+  padding: 0.46rem 0.9rem 0.46rem 0.5rem;
+  color: #111111;
+  font-size: 0.9rem;
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: 0 18px 48px rgba(74, 65, 51, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.brand-face {
+  position: relative;
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: #ffffff;
+  box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.1);
+}
+
+.brand-face::before,
+.brand-face::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  width: 8px;
+  height: 10px;
+  border-radius: 999px;
+  background: #111111;
+}
+
+.brand-face::before {
+  left: 6px;
+  transform: rotate(-25deg);
+}
+
+.brand-face::after {
+  right: 6px;
+  transform: rotate(25deg);
+}
+
+.model-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  background: rgba(255, 255, 255, 0.66);
+  padding: 0.65rem 0.9rem;
+  color: #111111;
+  font-size: 0.84rem;
+  font-weight: 850;
+  box-shadow: 0 18px 48px rgba(74, 65, 51, 0.1);
+  backdrop-filter: blur(16px);
+}
+
+.model-copy {
+  position: relative;
+  z-index: 10;
+  display: grid;
+  gap: 55vh;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 18vh 1.5rem 18vh;
+  pointer-events: none;
+}
+
+.model-copy > * {
+  pointer-events: auto;
+}
+
+.model-hero,
+.pack-panel {
+  width: min(430px, 100%);
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 28px 88px rgba(73, 64, 50, 0.14);
+  backdrop-filter: blur(20px) saturate(145%);
+}
+
+.model-hero {
+  padding: clamp(1.4rem, 4vw, 2.4rem);
+}
+
+.eyebrow {
+  margin: 0 0 0.8rem;
+  color: #5b5750;
+  font-size: 0.73rem;
+  font-weight: 950;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.model-hero h1 {
+  margin: 0;
+  max-width: 8.5ch;
+  color: #111111;
+  font-size: clamp(2.55rem, 5.4vw, 4.1rem);
+  font-weight: 950;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+.model-hero p,
+.final-panel p {
+  margin: 1.25rem 0 0;
+  color: #4d4942;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.62rem;
+  margin-top: 1.4rem;
+}
+
+.control-row span,
+.pack-panel li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  background: rgba(244, 241, 234, 0.64);
+  padding: 0.58rem 0.78rem;
+  color: #111111;
+  font-size: 0.84rem;
+  font-weight: 850;
+}
+
+.pack-panel {
+  justify-self: end;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 128px;
+  gap: 1rem;
+  padding: 1.2rem;
+}
+
+.pack-panel ul {
+  display: grid;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pack-panel li {
+  justify-content: flex-start;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.source-thumb {
+  overflow: hidden;
+  align-self: stretch;
+  min-height: 180px;
+  border-radius: 8px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  background: #ffffff;
+}
+
+.source-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 42%;
+}
+
+.final-panel {
+  justify-self: start;
+  display: block;
+  padding: 1.5rem;
+}
+
+.progress-meter {
+  position: fixed;
+  bottom: 1.5rem;
+  left: max(1.25rem, calc((100vw - 1180px) / 2 + 1.5rem));
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #111111;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.progress-meter i {
+  display: block;
+  width: 3px;
+  height: 96px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(17, 17, 17, 0.14);
+}
+
+.progress-meter b {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-origin: bottom;
+  border-radius: inherit;
+  background: #111111;
+}
+
+@media (max-width: 760px) {
+  .model-header {
+    height: 68px;
+    padding: 0 1rem;
+  }
+
+  .model-status {
+    display: none;
+  }
+
+  .model-copy {
+    gap: 62vh;
+    padding: 12vh 1rem 16vh;
+  }
+
+  .model-hero {
+    width: min(360px, 100%);
+  }
+
+  .model-hero h1 {
+    max-width: 8ch;
+    font-size: clamp(2.55rem, 13vw, 3.7rem);
+  }
+
+  .pack-panel {
+    justify-self: start;
+    grid-template-columns: 1fr;
+    width: min(360px, 100%);
+  }
+
+  .source-thumb {
+    height: 170px;
+  }
+}

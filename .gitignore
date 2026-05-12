@@ -1,0 +1,11 @@
+node_modules
+.npm-cache
+.vercel
+dist
+public/models
+public/images/ocean-depth-reference.png
+.env
+.env.local
+*.log
+verification
+vite-panda-ear*.log
